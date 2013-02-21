@@ -1,3 +1,4 @@
+<?
 require 'php-sdk/facebook.php';
 
 // Create our Application instance (replace this with your appId and secret).
@@ -15,7 +16,7 @@ if ($user) {
     $user = null;
   }
 }
-
+?>
 <HTML>
 <HEAD>
 <TITLE> Hello World in PHP </TITLE>
