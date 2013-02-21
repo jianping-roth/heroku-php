@@ -31,7 +31,7 @@
         
  		// although there is a logout url, it's not what we want.
  		$logoutUrl =$facebook->getLogoutUrl();
- 		echo '<p><a href="', $logoutUrl, '>logout</a></p>'; 
+ 		echo '<p><a href="', $logoutUrl, '">logout - 0</a></p>'; 
  		echo '<p><a href="logout.php">logout</a></p>';
     else: 
         $loginUrl = $facebook->getLoginUrl(array(
