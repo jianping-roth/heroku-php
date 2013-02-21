@@ -26,7 +26,12 @@
 <?
 	if ($user) :
  		echo '<p>User ID: ', $user, '</p>';
- 		$logoutUrl =$facebook->getLoginUrl();
+ 		$user_profile = $facebook->api('/me','GET');
+        echo '<pre>', print_r($user_profile), '</pre>';
+        
+ 		// although there is a logout url, it's not what we want.
+ 		$logoutUrl =$facebook->getLogoutUrl();
+ 		echo '<p><a href="', $logoutUrl,'>login</a></p>';
  		echo '<p><a href="logout.php">logout</a></p>';
     else: 
         $loginUrl = $facebook->getLoginUrl(array(
