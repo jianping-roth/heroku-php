@@ -22,11 +22,11 @@
 <TITLE>Facebook PHP </TITLE>
 </HEAD>
 <BODY>
-<h1>Hello World</h1>
 <?
 	if ($user) :
  		echo '<p>User ID: ', $user, '</p>';
  		$user_profile = $facebook->api('/me','GET');
+ 		echo '<h1>Hello ', $user_profile['first_name'], '</h1>';
         echo '<pre>', print_r($user_profile), '</pre>';
         
  		// although there is a logout url, it's not what we want.
