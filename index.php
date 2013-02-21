@@ -27,7 +27,10 @@
 	if ($user) :
  		echo '<p>User ID: ', $user, '</p>';
     else: 
-        $loginUrl = $facebook->getLoginUrl();
+        $loginUrl = $facebook->getLoginUrl(array(
+        	'display'=>'popup',
+        	'redirect_uri' => 'http://apps.facebook.com/coder-mulan/'
+        ));
         echo '<p><a href="', $loginUrl, '" target="_top">login</a></p>';
     endif;
  ?>
