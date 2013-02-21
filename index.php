@@ -26,6 +26,8 @@
 <?
 	if ($user) :
  		echo '<p>User ID: ', $user, '</p>';
+ 		$logoutUrl =$facebook->getLoginUrl();
+ 		echo '<p><a href="', $logoutUrl, '">logout</a></p>';
     else: 
         $loginUrl = $facebook->getLoginUrl(array(
         	'display'=>'popup',
