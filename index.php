@@ -24,7 +24,7 @@ if ($user) {
 <?
 // Hello world in PHP
  print("Hello World");
- echo "User ID: ', $user';
+ echo 'User ID: ', $user';
  ?>
  </BODY>
  </HTML>
