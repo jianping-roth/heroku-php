@@ -27,11 +27,21 @@
  		echo '<p>User ID: ', $user, '</p>';
  		$user_profile = $facebook->api('/me','GET');
  		echo '<h1>Hello ', $user_profile['first_name'], '</h1>';
-        echo '<pre>', print_r($user_profile), '</pre>';
         
+        if ($user_profile['sports']):
+            echo '<h2>Favorite Sports</h2>';
+            echo '<ul>';
+            foreach ($user_profile['sports'] as $key => $value) {
+            	echo '<li>', $value['name'], '</li>';
+            }
+            echo '</ul>';
+        endif;
+        
+        echo '<pre>', print_r($user_profile), '</pre>';
+                
  		// although there is a logout url, it's not what we want.
- 		$logoutUrl =$facebook->getLogoutUrl();
- 		echo '<p><a href="', $logoutUrl, '">logout - 0</a></p>'; 
+ 		//$logoutUrl =$facebook->getLogoutUrl();
+ 		//echo '<p><a href="', $logoutUrl, '">logout from facebook</a></p>'; 
  		echo '<p><a href="logout.php">logout</a></p>';
     else: 
         $loginUrl = $facebook->getLoginUrl(array(
