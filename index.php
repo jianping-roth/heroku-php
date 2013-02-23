@@ -33,7 +33,7 @@
         echo '<div class="movegroupp">';
         foreach ($user_graph['data'] as $key => $value) {
             echo '<div class="friendinfo group">
-            echo '<a href="http://facebook.com/', $value['id'], '"target="_top">';
+            echo '<a href="http://facebook.com/', $value['id'], '" target="_top">';
             echo '<img class="frienddumb" src="https://graph.facebook.com/',
                 $value['id'], '/picture" alt="',
                 $value['name'], '"/>';
