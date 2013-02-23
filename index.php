@@ -20,32 +20,31 @@
 <HTML>
 <HEAD>
     <meta charset="utf-8" />
-    <TITLE>Facebook PHP </TITLE>
+    <TITLE>Movie Recommendator</TITLE>
     <link rel="stylesheet" href="styles.css" />
 </HEAD>
 <BODY>
 <?
 	if ($user) :
- 		echo '<p>User ID: ', $user, '</p>';
+ 		echo '<p class="notes"><a href="logout.php">logout</p>';
  		$user_graph = $facebook->api('/me/friends','GET');
- 		echo '<h1>Hello ', $user_profile['first_name'], '</h1>';
 
-        echo '<ul class="lgrid group" >';
+
+        echo '<div class="movegroupp">';
         foreach ($user_graph['data'] as $key => $value) {
-            echo '<li>';
+            echo '<div class="friendinfo group">
+            echo '<a href="http://facebook.com/', $value['id'], '"target="_top">';
             echo '<img class="frienddumb" src="https://graph.facebook.com/',
                 $value['id'], '/picture" alt="',
                 $value['name'], '"/>';
-            echo '</li>';
+            echo '</a>';
+            echo '<h2>', $value['name'], '</h2>';
+            echo '<h3>Recommends</h3>';
+            echo '</div>';
         }
-        echo '</ul>';
+        echo '</div>';
         echo '<pre>', print_r($user_graph), '</pre>';
-                
- 		// although there is a logout url, it's not what we want.
- 		//$logoutUrl =$facebook->getLogoutUrl();
- 		//echo '<p><a href="', $logoutUrl, '">logout from facebook</a></p>'; 
- 		echo '<p><a href="logout.php">logout</a></p>';
-    else: 
+    else:
         $loginUrl = $facebook->getLoginUrl(array(
         	'display'=>'popup',
         	'redirect_uri' => 'http://apps.facebook.com/coder-mulan/'
