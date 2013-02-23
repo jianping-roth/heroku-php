@@ -29,10 +29,10 @@
  		echo '<p class="notes"><a href="logout.php">logout</p>';
  		$user_graph = $facebook->api('/me/friends','GET');
         $moviePath='me/friends?fields=movies.fields(likes,id,name,created_time,picture.width(100).height(100).type(square),link,description)';
-        $movie_graph = $facebook->api($moviePath);
+        $movies_graph = $facebook->api($moviePath);
 
         echo '<div class="movegroupp">';
-        foreach ($movie_graph['data'] as $key => $value) {
+        foreach ($movies_graph['data'] as $key => $value) {
             echo '<div class="friendinfo group">';
             echo '<a href="http://facebook.com/', $value['id'], '" target="_top">';
             echo '<img class="frienddumb" src="https://graph.facebook.com/',
@@ -41,6 +41,24 @@
             echo '</a>';
             echo '<h2>', $value['name'], '</h2>';
             echo '<h3>Recommends</h3>';
+
+            echo '<ul class="movies group">';
+
+            foreach ($value['movies']['data'] as $moviekey => $movievalue) {
+                echo '<li>';
+                    echo '<div class="viewinfo">';
+                     echo '<div class="wrapper>';
+                     echo '<h3>', $movievalue['name'], '</h3>';
+                     echo '<p>', $movievalue['description'], '</p>';
+
+                     echo '</div>';
+
+                    echo '</div>';
+
+                echo '</li>';
+            }
+
+            echo '</ul>';
             echo '</div>';
         }
         echo '</div>';
