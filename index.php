@@ -46,15 +46,12 @@
 
             foreach ($value['movies']['data'] as $moviekey => $movievalue) {
                 echo '<li>';
-                    echo '<div class="viewinfo">';
-                     echo '<div class="wrapper>';
-                     echo '<h3>', $movievalue['name'], '</h3>';
-                     echo '<p>', $movievalue['description'], '</p>';
-
-                     echo '</div>';
-
-                    echo '</div>';
-
+                echo '<div class="viewinfo">';
+                echo '<div class="wrapper">';
+                echo '<h3>', $movievalue['name'], '</h3>';
+                echo '<p>', $movievalue['description'], '</p>';
+                echo '</div>';
+                echo '</div>';
                 echo '</li>';
             }
 
