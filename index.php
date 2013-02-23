@@ -19,25 +19,27 @@
 ?>
 <HTML>
 <HEAD>
-<TITLE>Facebook PHP </TITLE>
+    <meta charset="utf-8" />
+    <TITLE>Facebook PHP </TITLE>
+    <link rel="stylesheet" href="styles.css" />
 </HEAD>
 <BODY>
 <?
 	if ($user) :
  		echo '<p>User ID: ', $user, '</p>';
- 		$user_profile = $facebook->api('/me','GET');
+ 		$user_graph = $facebook->api('/me/friends','GET');
  		echo '<h1>Hello ', $user_profile['first_name'], '</h1>';
-        
-        if ($user_profile['sports']):
-            echo '<h2>Favorite Sports</h2>';
-            echo '<ul>';
-            foreach ($user_profile['sports'] as $key => $value) {
-            	echo '<li>', $value['name'], '</li>';
-            }
-            echo '</ul>';
-        endif;
-        
-        echo '<pre>', print_r($user_profile), '</pre>';
+
+        echo '<ul class="lgrid group" >';
+        foreach ($user_graph['data'] as $key => $value) {
+            echo '<li>';
+            echo '<img class="frienddumb" src="https://graph.facebook.com/',
+                $value['id'], '/picture" alt="',
+                $value['name'], '"/>';
+            echo '</li>';
+        }
+        echo '</ul>';
+        echo '<pre>', print_r($user_graph), '</pre>';
                 
  		// although there is a logout url, it's not what we want.
  		//$logoutUrl =$facebook->getLogoutUrl();
