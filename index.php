@@ -33,7 +33,7 @@
 
         echo '<div class="movegroupp">';
         foreach ($movies_graph['data'] as $key => $value) {
-            if (count($value['movies']['data'])):
+            if (count($value['movies']['data'])) :
                 echo '<div class="friendinfo group">';
                 echo '<a href="http://facebook.com/', $value['id'], '" target="_top">';
                 echo '<img class="frienddumb" src="https://graph.facebook.com/',
@@ -58,13 +58,16 @@
 
                 echo '</ul>';
                 echo '</div>';
+            endif;
+
             }
-            echo '</div>';
-            echo '<pre>', print_r($user_graph), '</pre>';
-        endif;
+        echo '</div>';
+        echo '<pre>', print_r($user_graph), '</pre>';
+
     else:
         $loginUrl = $facebook->getLoginUrl(array(
         	'display'=>'popup',
+        	'scope' => 'email,friends_likes',
         	'redirect_uri' => 'http://apps.facebook.com/coder-mulan/'
         ));
         echo '<p><a href="', $loginUrl, '" target="_top">login</a></p>';
