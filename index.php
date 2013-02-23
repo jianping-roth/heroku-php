@@ -48,7 +48,7 @@
                 foreach ($value['movies']['data'] as $moviekey => $movievalue) {
                     echo '<li>';
                     echo '<div class="movieinfo">';
-                    echo '<img class="moviethumb" src="/', $movievalue['picture']['data']['url'],
+                    echo '<img class="moviethumb" src="', $movievalue['picture']['data']['url'],
                         '" alt="', $movievalue['name'], '" title="',
                         $movievalue['name'], '"/>';
                     echo '<div class="wrapper">';
