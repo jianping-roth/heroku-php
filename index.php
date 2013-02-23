@@ -33,33 +33,35 @@
 
         echo '<div class="movegroupp">';
         foreach ($movies_graph['data'] as $key => $value) {
-            echo '<div class="friendinfo group">';
-            echo '<a href="http://facebook.com/', $value['id'], '" target="_top">';
-            echo '<img class="frienddumb" src="https://graph.facebook.com/',
-                $value['id'], '/picture" alt="',
-                $value['name'], '"/>';
-            echo '</a>';
-            echo '<h2>', $value['name'], '</h2>';
-            echo '<h3>Recommends</h3>';
+            if (count($value['movies']['data'])):
+                echo '<div class="friendinfo group">';
+                echo '<a href="http://facebook.com/', $value['id'], '" target="_top">';
+                echo '<img class="frienddumb" src="https://graph.facebook.com/',
+                    $value['id'], '/picture" alt="',
+                    $value['name'], '"/>';
+                echo '</a>';
+                echo '<h2>', $value['name'], '</h2>';
+                echo '<h3>Recommends</h3>';
 
-            echo '<ul class="movies group">';
+                echo '<ul class="movies group">';
 
-            foreach ($value['movies']['data'] as $moviekey => $movievalue) {
-                echo '<li>';
-                echo '<div class="viewinfo">';
-                echo '<div class="wrapper">';
-                echo '<h3>', $movievalue['name'], '</h3>';
-                echo '<p>', $movievalue['description'], '</p>';
+                foreach ($value['movies']['data'] as $moviekey => $movievalue) {
+                    echo '<li>';
+                    echo '<div class="viewinfo">';
+                    echo '<div class="wrapper">';
+                    echo '<h3>', $movievalue['name'], '</h3>';
+                    echo '<p>', $movievalue['description'], '</p>';
+                    echo '</div>';
+                    echo '</div>';
+                    echo '</li>';
+                }
+
+                echo '</ul>';
                 echo '</div>';
-                echo '</div>';
-                echo '</li>';
             }
-
-            echo '</ul>';
             echo '</div>';
-        }
-        echo '</div>';
-        echo '<pre>', print_r($user_graph), '</pre>';
+            echo '<pre>', print_r($user_graph), '</pre>';
+        endif;
     else:
         $loginUrl = $facebook->getLoginUrl(array(
         	'display'=>'popup',
