@@ -143,7 +143,7 @@ ul.movies li img {
     text-decoration: none;
 }
 
-.paging .number .current a {
+.paging .current a {
     display: inline-block;
     color: white;
     background: rgba(242, 58, 41, .8);
