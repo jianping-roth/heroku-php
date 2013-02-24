@@ -21,9 +21,8 @@
 	if ($user) :
  		echo '<p class="notes"><a href="logout.php">logout</p>';
         $moviePath='me/friends?fields=id,name,movies.fields(likes,id,name,created_time,picture.width(100).height(100).type(square),link,description)&limit='.$qty.'&offset='.$currOffset;
-        echo $moviePath;
         $movies_graph = $facebook->api($moviePath);
-
+        $friends_graph = $facebook->api('/me/friends');
         echo '<div class="movegroupp">';
         foreach ($movies_graph['data'] as $key => $value) {
             if (count($value['movies']['data'])) :
@@ -62,7 +61,7 @@
 
         } // each friend
         echo '</div>';  // movegroupp
-        $numFriends = count($moviePath['data']);
+        $numFriends = count($friends_graph['data']);
         $totalPage = ceil($numFriends / $qty);
 
         if ($totalPage > 1):
