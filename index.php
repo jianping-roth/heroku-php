@@ -97,7 +97,6 @@
 
             echo '</div>';
             echo '</div>';
-            echo $currePage;
             echo '<div class="info">Page ', $currePage, ' of ', $totalPage, '</div>';
         endif;
     else:
