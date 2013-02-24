@@ -96,7 +96,7 @@
 
             echo '</div>';
             echo '</div>';
-            echo '<div class="info">Page', $currePage, 'of ', $totalPage, '</div>';
+            echo '<div class="info">Page ', $currePage, ' of ', $totalPage, '</div>';
         endif;
     else:
         $loginUrl = $facebook->getLoginUrl(array(
