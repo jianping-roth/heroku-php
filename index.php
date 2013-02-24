@@ -76,7 +76,7 @@
                    echo '</span>';
                 endif;
 
-                if ($currOffset > $qty) :
+                if ($currOffset >= $qty) :
                    echo '<span class="previous">';
                    echo '<a href="',$_SERVER['SELF'],'?offset=',
                       $currOffset-$qty, '">&laquo; Previous</a>';
