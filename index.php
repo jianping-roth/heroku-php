@@ -68,13 +68,7 @@
 
         if ($totalPage > 1):
             echo '<div class="paging">';
-                echo '<div class="pagenav">';
-                if ($nextOffset < $numFriends) :
-                   echo '<span class="next">';
-                   echo '<a href="',$_SERVER['SELF'],'?offset=',
-                      $nextOffset, '">Next&raquo;</a>';
-                   echo '</span>';
-                endif;
+            echo '<div class="pagenav">';
 
                 if ($currOffset >= $qty) :
                    echo '<span class="previous">';
@@ -82,7 +76,25 @@
                       $currOffset-$qty, '">&laquo; Previous</a>';
                    echo '</span>';
                 endif;
-                echo '</div>';
+
+                for ($i = 0; i < $totalPage; i++) {
+                    echo '<span class="number';
+                    if ($i == $currePage -1) {
+                        echo ' current ';
+                    }
+                    echo '">';
+                    echo '<a href="', $_SERVER['SELF'],'?offset=', $qty*$i, '>', $i+1 ,'</a>';
+                    echo '</span>';
+                }
+
+                if ($nextOffset < $numFriends) :
+                   echo '<span class="next">';
+                   echo '<a href="',$_SERVER['SELF'],'?offset=',
+                      $nextOffset, '">Next&raquo;</a>';
+                   echo '</span>';
+                endif;
+
+            echo '</div>';
             echo '</div>';
             echo '<div class="info">Page', $currePage, 'of ', $totalPage, '</div>';
         endif;
