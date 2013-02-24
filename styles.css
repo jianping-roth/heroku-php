@@ -40,8 +40,9 @@ header {
 .friendinfo {
     border-top: 1px solid #aaa;
     margin: 20px 0;
-    padding: 20px 0;
+    padding: 10px 0;
     background: rgba(242,197,62,.3);
+    margin-bottom: 1px;
 }
 
 .friendinfo h2 {
@@ -66,9 +67,9 @@ header {
 
 ul.movies {
     list-style: none;
-    padding: 5px 0;
     margin: 0;
     padding: 0;
+    padding: 5px 0;
 }
 
 ul.movies li {
@@ -97,7 +98,7 @@ ul.movies li:hover .movieinfo {
     display: block;
     background: rgba(169,217,190,.8);
     position: absolute;
-    bottom: 115px;
+    bottom: 110px;
     left: 0;
     z-index: 10;
 }
