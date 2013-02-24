@@ -20,48 +20,58 @@
 <?
 	if ($user) :
  		echo '<p class="notes"><a href="logout.php">logout</p>';
-        $moviePath='me/friends?fields=id,name,movies.fields(likes,id,name,created_time,picture.width(100).height(100).type(square),link,description)&limit='.$qty.'&offset='.$currOffset;
-        $movies_graph = $facebook->api($moviePath);
-        $friends_graph = $facebook->api('/me/friends');
+
+        $friends_graph = $facebook->api(array(
+        'method' => 'fql.query',
+        'query' => "select uid from user where uid in (select uid2 from friend where uid1 = me()) and movies != ''"
+        ));
+
+        $offsetText = ($currOffset) ? "OFFSET $currOffset" : '';
+        $movies_graph = $facebook->api(array(
+        'method' => 'fql.query',
+        'query' => "select name, uid, movies, pic_square from user where uid in (select uid2 from friend where uid1 = me()) and movies != '' LIMIT $qty $offsetText"
+        ));
+
+
         echo '<div class="movegroupp">';
-        foreach ($movies_graph['data'] as $key => $value) {
-            if (count($value['movies']['data'])) :
-                echo '<div class="friend group">';
-                echo '<div class="friendinfo group">';
-                echo '<a href="http://facebook.com/', $value['id'], '" target="_top">';
-                echo '<img class="frienddumb" src="https://graph.facebook.com/',
-                    $value['id'], '/picture" alt="',
-                    $value['name'], '"/>';
+        foreach ($movies_graph as $key => $value) {
+            echo '<div class="friend group">';
+            echo '<div class="friendinfo group">';
+            echo '<a href="http://facebook.com/', $value['uid'], '" target="_top">';
+            echo '<img class="frienddumb" src="https://graph.facebook.com/',
+                $value['uid'], '/picture" alt="',
+                $value['name'], '"/>';
+            echo '</a>';
+            echo '<h2>', $value['name'], '</h2>';
+            echo '<h3>Recommends</h3>';
+            echo '</div>'; // friendinfo
+
+            echo '<ul class="movies group">';
+            $moviePath = '/'.$value['uid'].'/movies?fields=id,name,description,picture.width(100).height(100).type(square)';
+            $movies_graph = $facebook->api($moviePath);
+
+            foreach ($movies_graph['data'] as $moviekey => $movievalue) {
+                echo '<li>';
+                echo '<a href="', $movievalue['link'], '" target="_top">';
+                echo '<img class="moviethumb" src="', $movievalue['picture']['data']['url'],
+                    '" alt="', $movievalue['name'], '" title="',
+                    $movievalue['name'], '"/>';
                 echo '</a>';
-                echo '<h2>', $value['name'], '</h2>';
-                echo '<h3>Recommends</h3>';
-                echo '</div>'; // friendinfo
+                echo '<div class="movieinfo">';
+                echo '<div class="wrapper">';
+                echo '<h3>', $movievalue['name'], '</h3>';
+                echo '<p>', $movievalue['description'], '</p>';
+                echo '</div>'; // wrapper
+                echo '</div>'; // movie info
+                echo '</li>';
+            }
 
-                echo '<ul class="movies group">';
-
-                foreach ($value['movies']['data'] as $moviekey => $movievalue) {
-                    echo '<li>';
-                    echo '<a href="', $movievalue['link'], '" target="_top">';
-                    echo '<img class="moviethumb" src="', $movievalue['picture']['data']['url'],
-                        '" alt="', $movievalue['name'], '" title="',
-                        $movievalue['name'], '"/>';
-                    echo '</a>';
-                    echo '<div class="movieinfo">';
-                    echo '<div class="wrapper">';
-                    echo '<h3>', $movievalue['name'], '</h3>';
-                    echo '<p>', $movievalue['description'], '</p>';
-                    echo '</div>'; // wrapper
-                    echo '</div>'; // movie info
-                    echo '</li>';
-                }
-
-                echo '</ul>';
-                echo '</div>'; // friend
-            endif;
+            echo '</ul>';
+            echo '</div>'; // friend
 
         } // each friend
         echo '</div>';  // movegroupp
-        $numFriends = count($friends_graph['data']);
+        $numFriends = count($friends_graph);
         $totalPage = ceil($numFriends / $qty);
         $currePage = $currOffset / $qty + 1;
         $nextOffset = $currOffset + $qty;
