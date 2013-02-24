@@ -29,7 +29,7 @@
         $offsetText = ($currOffset) ? "OFFSET $currOffset" : '';
         $movies_graph = $facebook->api(array(
         'method' => 'fql.query',
-        'query' => "select name, uid, movies, pic_square from user where uid in (select uid2 from friend where uid1 = me()) and movies != '' LIMIT $qty $offsetText"
+        'query' => "select name, uid from user where uid in (select uid2 from friend where uid1 = me()) and movies != '' LIMIT $qty $offsetText"
         ));
 
 
@@ -101,7 +101,7 @@
                 if ($nextOffset < $numFriends) :
                    echo '<span class="next">';
                    echo '<a href="',$_SERVER['SELF'],'?offset=',
-                      $nextOffset, '">Next&raquo;</a>';
+                      $nextOffset, '">Next &raquo;</a>';
                    echo '</span>';
                 endif;
 
