@@ -43,6 +43,7 @@
                 echo '</a>';
                 echo '<h2>', $value['name'], '</h2>';
                 echo '<h3>Recommends</h3>';
+                echo '</div>'; // friendinfo
 
                 echo '<ul class="movies group">';
 
@@ -64,7 +65,6 @@
 
                 echo '</ul>';
                 echo '</div>'; // friend
-                echo '</div>'; // friendinfo
             endif;
 
         } // each friend
