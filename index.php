@@ -83,7 +83,7 @@
                         echo ' current ';
                     }
                     echo '">';
-                    echo '<a href="', $_SERVER['SELF'],'?offset=', $qty*$i, '>', $i+1 ,'</a>';
+                    echo '<a href="', $_SERVER['SELF'],'?offset=', $qty*$i, '">', $i+1 ,'</a>';
                     echo '</span>';
                 }
 
