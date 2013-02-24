@@ -8,7 +8,6 @@
 	));
 	$user = $facebook->getUser();
     $qty = 5;
-    $currOffset = $_GET('offset');
 ?>
 <HTML>
 <HEAD>
