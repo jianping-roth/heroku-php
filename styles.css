@@ -1,5 +1,35 @@
+.group:before, .group:after {
+    content: '\0020';
+    display: block;
+    height: 0;
+    overflow: hidden;
+}
+
+.group:after {
+    clear: both;
+}
+
+.group {
+    zoom: 1;
+}
+
+body {
+    font-family: Helvetica, Arial, Geneva, sans-serif;
+    font-size: 100%;
+    margin: 0;
+    padding: 0;
+    background-color: #FBECC6;
+}
+
+a {
+    color: rgb(27,129, 140);
+}
 .movegroupp .li {
     display: inline-block;
+}
+
+.movegroupp .friendinfo .wrapper {
+    display: none;
 }
 
 .movegroupp .friendinfo .wrapper {
