@@ -76,7 +76,7 @@ ul.movies li {
     float: left;
     position: relative;
     padding-right: 10px;
-    padding-top: 2px;
+    padding-top: 4px;
 }
 
 ul.movies li .movieinfo {
