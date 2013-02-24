@@ -79,9 +79,10 @@
 
                 for ($i = 0; $i < $totalPage; $i++) {
                     echo '<span class="number';
-                    if ($i == $currePage -1) {
+                    if ($i == $currePage -1):
                         echo ' current ';
-                    }
+                    endif;
+
                     echo '">';
                     echo '<a href="', $_SERVER['SELF'],'?offset=', $qty*$i, '">', $i+1 ,'</a>';
                     echo '</span>';
@@ -96,6 +97,7 @@
 
             echo '</div>';
             echo '</div>';
+            echo $currePage;
             echo '<div class="info">Page ', $currePage, ' of ', $totalPage, '</div>';
         endif;
     else:
