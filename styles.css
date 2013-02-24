@@ -82,7 +82,7 @@ ul.movies li .movieinfo {
     -moz-border-radius: 10px;
     border-radius: 10px;
     padding: 20px;
-    font-size: 0;
+    font-size: 0.8em;
     width: 300px;
     max-height: 200px;
 }
