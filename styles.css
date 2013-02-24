@@ -24,8 +24,49 @@ body {
 a {
     color: rgb(27,129, 140);
 }
-.movegroupp .li {
-    display: inline-block;
+
+header {
+    padding: 10px 10px 0 370px;
+    height: 130px;
+    color: #555;
+    font-size: .9em;
+    #background: url ('') no-repeat left top;
+}
+
+.notes {
+    padding: 10px;
+}
+
+.friendinfo {
+    border-top: 1px solid #aaa;
+    margin: 20px 0;
+    padding: 20px 0;
+    background: rgba(242,197,62,.3);
+}
+
+.friendinfo h2 {
+   font: bold 1.8em/.8em "Helvetica Neue", Arial, Geneva, sans-serif;
+   color: #1b818c;
+    margin: 0;
+    padding: 0;
+}
+
+.friendinfo h2 {
+    font: bold 1.8em/.8em "Helvetica Neue", Arial, Geneva, sans-serif;
+    color: rgba(242,58,41,.8);
+    margin: 0;
+    padding: 0;
+}
+
+.friendinfo img {
+    float: left;
+    margin-left: 10px;
+}
+
+lu.movies {
+    list-style: none;
+    padding: 5px 0 0;
+    margin: 0;
 }
 
 .movegroupp .friendinfo .wrapper {
