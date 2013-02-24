@@ -52,7 +52,7 @@ header {
 }
 
 .friendinfo h3 {
-    font: bold 1.8em/.8em "Helvetica Neue", Arial, Geneva, sans-serif;
+    font: bold 1.2em/.8em "Helvetica Neue", Arial, Geneva, sans-serif;
     color: rgba(242,58,41,.8);
     margin: 0;
     padding: 0;
@@ -61,6 +61,7 @@ header {
 .friendinfo img {
     float: left;
     margin-left: 10px;
+    margin-right: 8px;
 }
 
 ul.movies {
@@ -123,5 +124,4 @@ ul.movies li img {
     -webkit-border-radius: 10px;
     -moz-border-radius: 10px;
     border-radius: 10px;
-
 }
