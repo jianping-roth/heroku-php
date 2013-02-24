@@ -70,7 +70,7 @@
 
             $currePage = $currOffset / $qty + 1;
             $nextOffset = $currOffset + $qty;
-            echo '<div class="info">Page, $currePage, 'of ', $totalPage, '</div>';
+            echo '<div class="info">Page', $currePage, 'of ', $totalPage, '</div>';
             echo '</div>';
         endif;
     else:
