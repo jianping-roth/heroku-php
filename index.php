@@ -7,15 +7,9 @@
 	  'secret' => '3e3d797f61d5d598ff6a07782c47a6c5',
 	));
 	$user = $facebook->getUser();
-	if ($user) {
-	  try {
-	    // Proceed knowing you have a logged in user who's authenticated.
-	    $user_profile = $facebook->api('/me');
-	  } catch (FacebookApiException $e) {
-	    error_log($e);
-	    $user = null;
-	  }
-	}
+    $qty = 5;
+    $currentPage = 1;
+    $currOffset = $_GET('offset');
 ?>
 <HTML>
 <HEAD>
@@ -27,8 +21,9 @@
 <?
 	if ($user) :
  		echo '<p class="notes"><a href="logout.php">logout</p>';
- 		$user_graph = $facebook->api('/me/friends','GET');
-        $moviePath='me/friends?fields=id,name,movies.fields(likes,id,name,created_time,picture.width(100).height(100).type(square),link,description)';
+        $moviePath='me/friends?fields=id,name,
+        movies.fields(likes,id,name,created_time,picture.width(100).height(100).type(square),link,description)
+        &limit='.$qty.'&offset='.$currOffset;
         $movies_graph = $facebook->api($moviePath);
 
         echo '<div class="movegroupp">';
@@ -69,8 +64,17 @@
 
         } // each friend
         echo '</div>';  // movegroupp
-        echo '<pre>', print_r($user_graph), '</pre>';
+        $numFriends = count($moviePath['data']);
+        $totalPage = ceil($numFriends / $qty);
 
+        if ($totalPage > 1):
+            echo '<div class="pagination">';
+
+            $currePage = $currOffset / $qty + 1;
+            $nextOffset = $currOffset + $qty;
+            echo '<div class="info">Page, $currePage, 'of ', $totalPage, '</div>';
+            echo '</div>';
+        endif;
     else:
         $loginUrl = $facebook->getLoginUrl(array(
         	'display'=>'popup',
