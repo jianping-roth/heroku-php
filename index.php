@@ -34,6 +34,7 @@
         echo '<div class="movegroupp">';
         foreach ($movies_graph['data'] as $key => $value) {
             if (count($value['movies']['data'])) :
+                echo '<div class="friend group">';
                 echo '<div class="friendinfo group">';
                 echo '<a href="http://facebook.com/', $value['id'], '" target="_top">';
                 echo '<img class="frienddumb" src="https://graph.facebook.com/',
@@ -56,17 +57,18 @@
                     echo '<div class="wrapper">';
                     echo '<h3>', $movievalue['name'], '</h3>';
                     echo '<p>', $movievalue['description'], '</p>';
-                    echo '</div>';
-                    echo '</div>';
+                    echo '</div>'; // wrapper
+                    echo '</div>'; // movie info
                     echo '</li>';
                 }
 
                 echo '</ul>';
-                echo '</div>';
+                echo '</div>'; // friend
+                echo '</div>'; // friendinfo
             endif;
 
-            }
-        echo '</div>';
+        } // each friend
+        echo '</div>';  // movegroupp
         echo '<pre>', print_r($user_graph), '</pre>';
 
     else:
