@@ -77,7 +77,7 @@
                    echo '</span>';
                 endif;
 
-                for ($i = 0; i < $totalPage; i++) {
+                for ($i = 0; $i < $totalPage; $i++) {
                     echo '<span class="number';
                     if ($i == $currePage -1) {
                         echo ' current ';
