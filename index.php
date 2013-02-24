@@ -63,13 +63,27 @@
         echo '</div>';  // movegroupp
         $numFriends = count($friends_graph['data']);
         $totalPage = ceil($numFriends / $qty);
+        $currePage = $currOffset / $qty + 1;
+        $nextOffset = $currOffset + $qty;
 
         if ($totalPage > 1):
-            echo '<div class="pagination">';
+            echo '<div class="paging">';
+                echo '<div class="pagenav">';
+                if ($nextOffset > $numFriends) :
+                   echo '<span class="next">';
+                   echo '<a href="',$_SERVER['SELF'],'?offset=',
+                      $nextOffset, '">Mext&raquo;</a>';
+                   echo '</span>';
+                endif;
 
-            $currePage = $currOffset / $qty + 1;
-            $nextOffset = $currOffset + $qty;
-            echo '<div class="info">Page', $currePage, 'of ', $totalPage, '</div>';
+                if ($currOffset > $qty) :
+                   echo '<span class="previous">';
+                   echo '<a href="',$_SERVER['SELF'],'?offset=',
+                      $currOffset-$qty, '">&laquo; Previous</a>';
+                   echo '</span>';
+                endif;
+                echo '<div class="info">Page', $currePage, 'of ', $totalPage, '</div>';
+                echo '</div>';
             echo '</div>';
         endif;
     else:
