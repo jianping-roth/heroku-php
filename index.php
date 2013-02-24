@@ -22,6 +22,7 @@
  		echo '<p class="notes"><a href="logout.php">logout</p>';
         $moviePath='me/friends?fields=id,name,movies.fields(likes,id,name,created_time,picture.width(100).height(100).type(square),link,description)
         &limit='.$qty.'&offset='.$currOffset;
+        echo $moviePath;
         $movies_graph = $facebook->api($moviePath);
 
         echo '<div class="movegroupp">';
