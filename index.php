@@ -69,10 +69,10 @@
         if ($totalPage > 1):
             echo '<div class="paging">';
                 echo '<div class="pagenav">';
-                if ($nextOffset > $numFriends) :
+                if ($nextOffset < $numFriends) :
                    echo '<span class="next">';
                    echo '<a href="',$_SERVER['SELF'],'?offset=',
-                      $nextOffset, '">Mext&raquo;</a>';
+                      $nextOffset, '">Next&raquo;</a>';
                    echo '</span>';
                 endif;
 
@@ -82,9 +82,9 @@
                       $currOffset-$qty, '">&laquo; Previous</a>';
                    echo '</span>';
                 endif;
-                echo '<div class="info">Page', $currePage, 'of ', $totalPage, '</div>';
                 echo '</div>';
             echo '</div>';
+            echo '<div class="info">Page', $currePage, 'of ', $totalPage, '</div>';
         endif;
     else:
         $loginUrl = $facebook->getLoginUrl(array(
