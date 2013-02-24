@@ -51,7 +51,7 @@ header {
     padding: 0;
 }
 
-.friendinfo h2 {
+.friendinfo h3 {
     font: bold 1.8em/.8em "Helvetica Neue", Arial, Geneva, sans-serif;
     color: rgba(242,58,41,.8);
     margin: 0;
@@ -70,11 +70,58 @@ ul.movies {
     padding: 0;
 }
 
-
-.movegroupp .friendinfo .wrapper {
-    display: none;
+ul.movies li {
+    float: left;
+    position: relative;
+    padding-right: 10px;
 }
 
-.movegroupp .friendinfo .wrapper {
+ul.movies li .movieinfo {
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+    padding: 20px;
+    font-size: 0;
+    width: 300px;
+    max-height: 200px;
+}
+
+ul.movies li .movieinfo .wrapper {
     display: none;
+    max-height: 100px;
+    overflow: hidden;
+}
+
+ul.movies li:hover .movieinfo {
+    display: block;
+    background: rgba(169,217,190,.8);
+    position: absolute;
+    bottom: 115px;
+    left: 0;
+    z-index: 10;
+}
+
+ul.movies li .movieinfo h3 {
+    margin: 0;
+    padding: 0;
+    color: #1bb1bc;
+    line-height: 1em;
+    padding-bottom: 5px;
+}
+
+ul.movies li .movieinfo p {
+    margin: 0;
+    padding: 0;
+    color: #444;
+    line-height: 1.4em;
+    padding-bottom: 5px;
+}
+
+ul.movies li img {
+    width: 100px;
+    height: 100px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+
 }
