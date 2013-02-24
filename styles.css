@@ -129,22 +129,28 @@ ul.movies li img {
 }
 
 .paging {
-    margin: 5px;
-    padding: 5px;
-    color: #1bb1bc;
+    padding: 10px;
+    text-align: center;
 }
 
-.previous {
-    margin-right: 5px;
+.pagenav {
+    border-top: 1px dotted #333;
+    padding: 5px 0;
 }
 
-.next {
-    margin-left: 5px;
+.paging .number a {
+    padding: 0 5px;
+    text-decoration: none;
 }
 
-.number {
-    margin-left: 5px;
-    margin-right: 5px;
+.paging .number .current a {
+    display: inline-block;
+    color: white;
+    background: rgba(242, 58, 41, .8);
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+    margin: 0 5px;
 }
 
 .info {
